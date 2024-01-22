@@ -1,0 +1,20 @@
+# 构建图
+mutation {
+  createPerson(input: {name: "Alice"}) {
+    id
+  }
+  // ...
+  createRelationship(from: "Alice", to: "Eve", type: "WORKS_WITH") {
+    id
+  }
+}
+
+# 图匹配查询
+query {
+  people(name: "Alice") {
+    name
+    knows {
+      name
+    }
+  }
+}

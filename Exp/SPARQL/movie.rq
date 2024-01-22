@@ -1,0 +1,42 @@
+# 创建图数据
+INSERT DATA {
+  :Tom_Hanks rdf:type :Actor ;
+             foaf:name "Tom Hanks" ;
+             foaf:birthYear 1956 ;
+             :actedIn :Forrest_Gump, :Inception .
+
+  :Julia_Roberts rdf:type :Actor ;
+                 foaf:name "Julia Roberts" ;
+                 foaf:birthYear 1967 ;
+                 :actedIn :Forrest_Gump .
+
+  :Steven_Spielberg rdf:type :Director ;
+                    foaf:name "Steven Spielberg" ;
+                    foaf:birthYear 1946 ;
+                    :directed :Forrest_Gump .
+
+  :Christopher_Nolan rdf:type :Director ;
+                      foaf:name "Christopher Nolan" ;
+                      foaf:birthYear 1970 ;
+                      :directed :Inception .
+
+  :Forrest_Gump rdf:type :Movie ;
+                dc:title "Forrest Gump" ;
+                dc:year 1994 .
+
+  :Inception rdf:type :Movie ;
+             dc:title "Inception" ;
+             dc:year 2010 .
+}
+
+# 执行查询
+SELECT ?actor ?movie ?director
+WHERE {
+  ?actor rdf:type :Actor ;
+         foaf:name "Tom Hanks" ;
+         :actedIn ?movie .
+
+  ?movie dc:year ?year ;
+         :directed ?director .
+  ?director rdf:type :Director .
+}

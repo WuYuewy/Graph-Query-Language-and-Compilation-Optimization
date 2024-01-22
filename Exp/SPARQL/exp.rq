@@ -1,0 +1,13 @@
+# 构建图
+INSERT DATA {
+  ex:Alice ex:KNOWS ex:Bob .
+  ex:Bob ex:KNOWS ex:Charlie .
+  ex:Alice ex:WORKS_WITH ex:Eve .
+}
+
+# 子图匹配查询
+SELECT ?person ?friend
+WHERE {
+  ?person ex:KNOWS ?friend .
+  ?person ex:name 'Alice' .
+}

@@ -1,0 +1,57 @@
+# 创建图数据
+mutation {
+  createActor(input: {name: "Tom Hanks", birthYear: 1956}) {
+    id
+  }
+
+  createActor(input: {name: "Julia Roberts", birthYear: 1967}) {
+    id
+  }
+
+  createDirector(input: {name: "Steven Spielberg", birthYear: 1946}) {
+    id
+  }
+
+  createDirector(input: {name: "Christopher Nolan", birthYear: 1970}) {
+    id
+  }
+
+  createMovie(input: {title: "Forrest Gump", year: 1994}) {
+    id
+  }
+
+  createMovie(input: {title: "Inception", year: 2010}) {
+    id
+  }
+
+  createActedInRelationship(from: {name: "Tom Hanks"}, to: {title: "Forrest Gump"}) {
+    id
+  }
+
+  createActedInRelationship(from: {name: "Tom Hanks"}, to: {title: "Inception"}) {
+    id
+  }
+
+  createDirectedRelationship(from: {name: "Steven Spielberg"}, to: {title: "Forrest Gump"}) {
+    id
+  }
+
+  createDirectedRelationship(from: {name: "Christopher Nolan"}, to: {title: "Inception"}) {
+    id
+  }
+}
+
+# 执行查询
+{
+  actor(name: "Tom Hanks") {
+    name
+    actedIn {
+      title
+      year
+      directed {
+        name
+        birthYear
+      }
+    }
+  }
+}
